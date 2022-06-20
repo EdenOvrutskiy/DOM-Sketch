@@ -1,9 +1,23 @@
 .row {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
 }
 
-.column {
-    display: flex;
-    flex-direction: column;
+/*creates border around each square in the grid
+by selecting all <div>s that are nested in a 
+<div> of class "row".*/
+.row div {
+    border: 1px solid black;
+}
+
+
+/*cause body to fill up the entire screen,
+  use that to center the grid at the middle of the page*/
+body {
+    margin: 0;
+    height: 100vh;
+    /*width: 100wh;*/
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }

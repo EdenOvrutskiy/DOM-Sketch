@@ -1,3 +1,7 @@
+//todo:
+//listen to events on each grid and make it change color
+
+
 //create a 16x16 grid of square divs.
 
 //create a container for all divs
@@ -8,8 +12,8 @@ for (i = 0; i < 16; ++i) {
     fillRow(rowDiv);
 }
 
-//create a div-container for a row
-function createRowContainer() {
+
+function createRowContainer() { //to separate each row from one another
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     containerDiv.appendChild(rowDiv);
@@ -21,10 +25,20 @@ function fillRow(rowDiv) {//create 16 divs and place into row
         //create a div
         singleDiv = document.createElement('div');
         //give it some height via content to see it
-        singleDiv.textContent = 'div.';
+        singleDiv.textContent = 'XXX';
         //give it class of "row-element"
         //singleDiv.classList.add('row-element');
         //nest in container
         rowDiv.appendChild(singleDiv);
     }
 }
+
+//turn each of the boxes in the grid into a perfect square
+//size right now determined by:
+//horizonal sides of rectangles:
+//length of text-content
+// 
+
+//vertical sides of rectangles
+//  height of text
+//   +length of text
