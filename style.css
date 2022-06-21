@@ -1,50 +1,51 @@
+/* applying box-sizing: border-box; to .container, .row {.row div}
+fixes border bugs, that were probably caused by the borders 
+pushing the squares out of their container */
 .row {
     display: flex;
-    justify-content: space-between;
-    /*gap: 1px;*/
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
-    box-sizing: border-box;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    /*gap: 1px;*/
-    border: 1px solid black;
+    justify-content: space-between;
     height: 80vh;
     width: 80vh;
-    justify-content: space-between;
-    /*justify-content: space-between;
-    align-items: space-between;*/
+    border: 1px solid black;
     box-sizing: border-box;
 }
 
 .row div {
     /*invidual boxes*/
     /*creates border around each square in the grid
-    by selecting all <div>s that are nested in a 
-   <div> of class "row".*/
+    by selecting all <div>s that are nested in .row */
     border: 1px solid black;
     width: 100%;
     height: 100%;
-    flex: 1 1 1;
     box-sizing: border-box;
 }
 
 
-/*cause body to fill up the entire screen,
-  use that to center the grid at the middle of the page*/
 body {
     margin: 0;
+    /*cause body to fill up the entire screen,*/
     height: 100vh;
-    /*width: 100wh;*/
+    width: 100vw;
     display: flex;
+    /*center the grid at the middle of the page*/
     justify-content: center;
     align-items: center;
+    /*put change grid button below grid */
     flex-direction: column;
 }
 
 .hovered {
     background-color: black;
+}
+
+button {
+    margin: 10px;
 }

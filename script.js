@@ -1,15 +1,17 @@
 //todo:
-//handle esc / bad input for grid size
+//initializing a 20x20 document on half screen causes
+//  right and bottom borders to be too thin.
+//clean up code 
+//handle esc / bad input / big input for grid size
 //create rgb stuff
-//
+//isNumber function / handling NaN a bit misleading..
 
 //create a container for all grid divs
 const containerDiv = document.querySelector('.container');
 
-let size = 50
+let size = 20
 createGrid(size);
-function createGrid(size) {
-    //create a size*size grid of square divs.
+function createGrid(size) {//create a size*size grid of square divs.
     for (let i = 0; i < size; ++i) {
         const rowDiv = createRowContainer();
         fillRow(rowDiv);
@@ -61,17 +63,48 @@ function onUnhover(eventObject) {
 button = document.createElement('button');
 buttonElement = document.body.appendChild(button);
 buttonElement.textContent = 'change grid size';
+buttonElement.style.margin = "2 px";
 //on click: prompt code
 buttonElement.addEventListener('click', promptForSize);
 function promptForSize() {
     size = prompt('enter a number');
-    //recreate the grid with the new size
-    destroyGrid();
-    createGrid(size); // makes a new grid
-    console.log('size changed to: ', size);
+    let input = size;
+    if (UserCancelledInput(input)) {
+        return; //exit input dialog quietly
+    }
+    input = convertStringInputToNumber(input);
+    if (isValidInput(input)) {
+        //recreate the grid with the new size
+        destroyGrid();
+        size = input;
+        createGrid(size); // makes a new grid
+        return;
+    }
+    else {
+        alert('error: size must be a positive integer > 0');
+        return;
+    }
 }
 
-//need to destroy the old one...
+function convertStringInputToNumber(textInput) {
+    return (parseInt(textInput));
+}
+
+function isValidInput(input) {
+    return (isNumber(input) && greaterThanZero(input));
+}
+
+function greaterThanZero(number) {
+    return (number > 0);
+}
+
+function isNumber(number) {
+    return ((typeof number) && !isNaN(number));
+}
+
+function UserCancelledInput(input) {
+    return (input == null);
+}
 
 function destroyGrid() {
     //maybe mark each square with a class so I can easily
@@ -91,15 +124,4 @@ function destroyGrid() {
     });
 }
 
-
-//it works!
-
-//small bug with 50 squares: the bottom of the 
-//grid has an extra line,
-//might be the borders adding size, display: border-box can help
-//no, applied it to both rows and squares and the issue persists.
-//it works fine on 100, 20.. somthing in the 50~60 range causes this
-
-//applying box-sizing: border-box; to .container, .row {.row div}
-//fixes border bugs, that were probably caused by the borders 
-//pushing the squares out of their container
+//handle esc / bad input / big input for grid size
