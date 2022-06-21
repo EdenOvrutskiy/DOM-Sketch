@@ -1,6 +1,14 @@
 .row {
     display: flex;
     justify-content: center;
+    /*gap: 1px;*/
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    /*gap: 1px;*/
+    border: 1px solid black;
 }
 
 /*creates border around each square in the grid
@@ -8,6 +16,8 @@ by selecting all <div>s that are nested in a
 <div> of class "row".*/
 .row div {
     border: 1px solid black;
+    width: 20px;
+    height: 20px;
 }
 
 
@@ -17,7 +27,7 @@ body {
     margin: 0;
     height: 100vh;
     /*width: 100wh;*/
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }

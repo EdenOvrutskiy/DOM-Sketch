@@ -1,4 +1,6 @@
 //todo:
+//make outer-most lines as bold as the middle
+
 //listen to events on each grid and make it change color
 
 
@@ -25,7 +27,7 @@ function fillRow(rowDiv) {//create 16 divs and place into row
         //create a div
         singleDiv = document.createElement('div');
         //give it some height via content to see it
-        singleDiv.textContent = 'XXX';
+        //singleDiv.textContent = 'x';
         //give it class of "row-element"
         //singleDiv.classList.add('row-element');
         //nest in container
@@ -33,12 +35,33 @@ function fillRow(rowDiv) {//create 16 divs and place into row
     }
 }
 
-//turn each of the boxes in the grid into a perfect square
-//size right now determined by:
-//horizonal sides of rectangles:
-//length of text-content
-// 
+//outer sides of the grid are less bold, becaue they
+//are only touching a single border.
 
-//vertical sides of rectangles
-//  height of text
-//   +length of text
+//I could select them manually to bolden to border..
+
+//or I could set some property such that it can be applied
+//to each square
+
+//some if statemet to check if it's the first in the row?
+
+//it's hard to inject that into the code..
+
+//the first in each row need border-left
+//the last in each row need border-right
+
+//all first row needs border-top
+
+//all bottom row needs border-bottom
+
+//maybe border-box property can help things?
+
+//margin maybe?
+
+//maybe I can just google "intersecting borders"
+
+//outline property?
+
+//create gaps between all of them so the overlap isn't obvious?
+
+//maybe the grid css property?
