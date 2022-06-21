@@ -1,7 +1,10 @@
 .row {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     /*gap: 1px;*/
+    width: 100%;
+    height: 100%;
+    box-sizing:content-box;
 }
 
 .container {
@@ -9,16 +12,22 @@
     flex-direction: column;
     /*gap: 1px;*/
     border: 1px solid black;
+    height: 80vh;
+    width: 80vh;
+    justify-content: space-between;
+    /*justify-content: space-between;
+    align-items: space-between;*/
 }
 
-/*creates border around each square in the grid
-by selecting all <div>s that are nested in a 
-<div> of class "row".*/
-.row div {
+.row div {/*invidual boxes*/
+    /*creates border around each square in the grid
+    by selecting all <div>s that are nested in a 
+   <div> of class "row".*/
     border: 1px solid black;
-    width: 10px;
-    height: 10px;
-
+    width: 100%;
+    height: 100%;
+    flex: 1 1 1;
+    box-sizing:content-box;
 }
 
 

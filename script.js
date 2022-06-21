@@ -1,5 +1,4 @@
 //todo:
-//allow the user to change the number of squares
 //create a static size for the grid, regardless of squares in it
 //handle esc / bad input for grid size
 
@@ -85,5 +84,47 @@ function destroyGrid() {
     squares.forEach(square => {
         square.remove();
     });
-
+    const rows = document.querySelectorAll('.row');
+    rows.forEach(row => {
+        row.remove();
+    });
 }
+
+//static grid size:
+//set width/height on container?
+//and then flex will stretch everything?
+
+//my divs are empty, and I can only give them a size
+//using width / height.
+
+//if I do that, they simply break out of the container.
+
+//maybe I need to target the rows.. Since they are direct
+//children on the container..
+
+//and then I make each row have "space evenly" in it as well..
+
+//I tired that, now I have a bunch of dots instead of squares,
+//all of size 0x0 and a 1px border surrounding them.
+
+//causing the rows to fill 100% of the parent element (.container)
+//gave me squares on the screen..
+
+//resizing time.
+
+//resizing makes it stretch horizontally but I have 
+//rectangles instead of squares.
+
+//I think I see a problem:
+//the reason I have a few rows at the bottom, is because
+//I'm only destroying the square divs, but not the rows
+//I've made earlier in my destroyGrid() 
+
+
+//it works!
+
+//small bug with 50 squares: the bottom of the 
+//grid has an extra line,
+//might be the borders adding size, display: border-box can help
+//no, applied it to both rows and squares and the issue persists.
+//it works fine on 100, 20.. somthing in the 50~60 range causes this
