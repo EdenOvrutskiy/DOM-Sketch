@@ -16,8 +16,9 @@ by selecting all <div>s that are nested in a
 <div> of class "row".*/
 .row div {
     border: 1px solid black;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
+
 }
 
 
@@ -30,6 +31,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .hovered {
