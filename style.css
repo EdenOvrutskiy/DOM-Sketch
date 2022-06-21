@@ -4,7 +4,7 @@
     /*gap: 1px;*/
     width: 100%;
     height: 100%;
-    box-sizing:content-box;
+    box-sizing: border-box;
 }
 
 .container {
@@ -17,9 +17,11 @@
     justify-content: space-between;
     /*justify-content: space-between;
     align-items: space-between;*/
+    box-sizing: border-box;
 }
 
-.row div {/*invidual boxes*/
+.row div {
+    /*invidual boxes*/
     /*creates border around each square in the grid
     by selecting all <div>s that are nested in a 
    <div> of class "row".*/
@@ -27,7 +29,7 @@
     width: 100%;
     height: 100%;
     flex: 1 1 1;
-    box-sizing:content-box;
+    box-sizing: border-box;
 }
 
 
