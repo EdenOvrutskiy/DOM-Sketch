@@ -43,8 +43,7 @@ body {
 }
 
 .hovered {
-    filter : brightness(2);
-    background-color: green;
+    background-color: white;
 }
 
 button {

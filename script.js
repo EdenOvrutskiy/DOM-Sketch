@@ -44,27 +44,40 @@ function listenToHover(div) {
 }
 
 function onHover(eventObject) {
-    console.log(eventObject);
+    //console.log(eventObject);
     //extract div from eventObject
     const extractedDiv = eventObject.target;
     //hovered class changed the color
     extractedDiv.classList.add('hovered');
 
     /*RGB color code */
-    /*
     let rgbColor = generateRGBColorArray();
     extractedDiv.style.backgroundColor =
         `rgb(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]})`;
-    */
     /*darkening code */
-    //10% of black = ? 
-    //is it the extra rgb variable
-    //extractedDiv.style.backgroundColor = 'black';
 
-    //grab elements css brightness
-    //reduce it by 10% per pass
-    console.log('style filter: ', extractedDiv.style.filter[0]);
 
+    if (extractedDiv.style.filter == '') {
+        extractedDiv.style.filter = "brightness(100%)";
+        //console.log('style filter: ', extractedDiv.style.filter);
+        //console.log('style: ', extractedDiv.style);
+        //extract value from the filter's string
+    }
+    else {
+        const filterString = extractedDiv.style.filter;
+        const regex = '\\d+';
+        const extractedBrightness = filterString.match(regex);
+        if (extractedBrightness > 0) {
+            const newBrightness = extractedBrightness - 10;
+            const newFilterString = filterString.replace(
+                extractedBrightness, newBrightness);
+            console.log('newfilterstring = ' + newFilterString);
+            extractedDiv.style.filter = newFilterString;
+        }
+
+        //string-length adapts, try to extract the brightness value
+        //in a better way.
+    }
 
 }
 
@@ -137,7 +150,7 @@ function destroyGrid() {
     // .container
     //classes I can try targetting
     const squares = document.querySelectorAll('.row div');
-    console.log(squares);
+    //console.log(squares);
     squares.forEach(square => {
         square.remove();
     });
@@ -168,10 +181,3 @@ function generateRGBColorArray() {
     }
     return rgbColor;
 }
-
-//cause each square to become darker when hovered,
-//10 hovers turning it completly black
-
-//first I'll try to make it darker with the rgb.
-
-
