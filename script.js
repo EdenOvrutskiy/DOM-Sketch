@@ -2,9 +2,8 @@
 //initializing a 20x20 document on half screen causes
 //  right and bottom borders to be too thin.
 //clean up code 
-//handle esc / bad input / big input for grid size
-//create rgb stuff
 //isNumber function / handling NaN a bit misleading..
+//create rgb stuff
 
 //create a container for all grid divs
 const containerDiv = document.querySelector('.container');
@@ -48,8 +47,25 @@ function onHover(eventObject) {
     console.log(eventObject);
     //extract div from eventObject
     const extractedDiv = eventObject.target;
-    extractedDiv.classList.add('hovered');
     //hovered class changed the color
+    extractedDiv.classList.add('hovered');
+
+    /*RGB color code */
+    /*
+    let rgbColor = generateRGBColorArray();
+    extractedDiv.style.backgroundColor =
+        `rgb(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]})`;
+    */
+    /*darkening code */
+    //10% of black = ? 
+    //is it the extra rgb variable
+    //extractedDiv.style.backgroundColor = 'black';
+
+    //grab elements css brightness
+    //reduce it by 10% per pass
+    console.log('style filter: ', extractedDiv.style.filter[0]);
+
+
 }
 
 /*
@@ -81,7 +97,7 @@ function promptForSize() {
         return;
     }
     else {
-        alert('error: size must be a positive integer > 0');
+        alert('error: input must be a number between 1 ~ 100');
         return;
     }
 }
@@ -89,12 +105,19 @@ function promptForSize() {
 function convertStringInputToNumber(textInput) {
     return (parseInt(textInput));
 }
-
-function isValidInput(input) {
-    return (isNumber(input) && greaterThanZero(input));
+function isSmallerThan100(input) {
+    return (input <= 100)
 }
 
-function greaterThanZero(number) {
+function isValidInput(input) {
+    return (
+        isNumber(input)
+        && isGreaterThanZero(input)
+        && isSmallerThan100(input)
+    );
+}
+
+function isGreaterThanZero(number) {
     return (number > 0);
 }
 
@@ -124,4 +147,31 @@ function destroyGrid() {
     });
 }
 
-//handle esc / bad input / big input for grid size
+//create rgb stuff
+
+//generate random rgb value
+//look up rgb syntax
+//rgb((0~255) x3 times)
+
+function generateRandomIntegerBetween0And255() {
+    const randomSmallFloat = Math.random();
+    const randomFloatInRange = randomSmallFloat * 255;
+    const randomInteger = Math.floor(randomFloatInRange);
+    return randomInteger;
+}
+
+function generateRGBColorArray() {
+    let rgbColor = [];
+    for (let i = 0; i < 3; i++) {
+        const randomNumber = generateRandomIntegerBetween0And255();
+        rgbColor.push(randomNumber);
+    }
+    return rgbColor;
+}
+
+//cause each square to become darker when hovered,
+//10 hovers turning it completly black
+
+//first I'll try to make it darker with the rgb.
+
+
