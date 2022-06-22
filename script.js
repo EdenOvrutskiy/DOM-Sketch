@@ -1,23 +1,25 @@
 //todo:
 //bug: initializing a 20x20 document on half screen causes
 //  right and bottom borders to be too thin.
-//isNumber function / handling NaN a bit misleading..
-//clean up code 
+//do I have too many "globals"? should I pass divs etc around
+//functions?
+
 
 //create a container for all grid divs
 const containerDiv = document.querySelector('.container');
 
 let size = 20 //initial size
-//change-grid-size button
-//change the squares in the grid
+createGrid(size);
+
+//create a button for changing grid size
 button = document.createElement('button');
 buttonElement = document.body.appendChild(button);
 buttonElement.textContent = 'change grid size';
 buttonElement.style.margin = "2 px";
-//on click: prompt code
-buttonElement.addEventListener('click', promptForSize);
 
-createGrid(size);
+//add on-click event
+buttonElement.addEventListener('click', resizeGrid);
+
 function createGrid(size) {//create a size*size grid of square divs.
     for (let i = 0; i < size; ++i) {
         const rowDiv = createRowContainer();
@@ -72,15 +74,16 @@ function onHover(eventObject) {
 
 }
 
-
-
-function promptForSize() {
+function resizeGrid() {
     size = prompt('enter a number');
     let input = size;
+    
     if (UserCancelledInput(input)) {
         return; //exit input dialog quietly
     }
+   
     input = convertStringInputToNumber(input);
+    
     if (isValidInput(input)) {
         //recreate the grid with the new size
         eraseGrid();
@@ -148,9 +151,3 @@ function generateRGBColorArray() {
     }
     return rgbColor;
 }
-
-//clean up code
-//separation of concerns:
-//onHover does a lot,
-//should there only be 1 event listener?
-//order the code
