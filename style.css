@@ -42,10 +42,6 @@ body {
     flex-direction: column;
 }
 
-.hovered {
-    background-color: white;
-}
-
 button {
     margin: 10px;
 }
